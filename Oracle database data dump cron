@@ -1,0 +1,10 @@
+#!/bin/sh
+#big_data oracle 19c 数据库数据泵定时备份脚本
+#创建人：曹鹏
+#创建日期：2021-03-27
+#版本号V1.0
+#oracle 数据泵备份脚本中必须要引入oracle用户环境变量，不引入环境变量手工执行脚本可以备份数据，使用crontab定时备份时则不成功，要让crontab定时备份成功必须引入oracle用户环境变量值。mariadb数据库备份时则不用引入环境变量。
+source /home/oracle/.bash_profile
+newdate=`date "+%Y%m%d"`
+expdp system/CAOpeng7133 schemas=caopeng,scott,hexiaosen directory=exdump dumpfile=${newdate}.dmp logfile=${newdate}.log compression=all parallel=2
+ls -hl /u01/app/oracle/exdump
