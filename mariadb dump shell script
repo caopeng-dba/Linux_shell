@@ -1,0 +1,9 @@
+#!/bin/sh
+#test数据库备份脚本文件
+#创建人：曹鹏
+#创建日期：20210322
+#V1.0
+newdate=`date "+%Y%m%d"`
+mysqldump -h 192.168.1.9 -u appowner -ppassword test > /home/oracle/mariadbbak/test${newdate}bak.sql
+ls -hl /home/oracle/mariadbbak
+
